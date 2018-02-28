@@ -8,5 +8,6 @@ module.exports = {
       pass: 'Thumper12'
     }
   },
-  dbConnstring: 'mongodb://127.0.0.1:27017/collaborator'
+  dbConnstring: 'mongodb://127.0.0.1:27017/collaborator',
+  sessionKey: 'HelloCollaborator'
 }
