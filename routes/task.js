@@ -23,7 +23,7 @@ router.get('/task/:id', function(req, res) {
       }
 
       if (data) {
-        res.render('task', {data: data, roomid: data.id});
+        res.render('task', {content: data.content, roomid: data.id});
       } else {
         res.render('error');
       }
