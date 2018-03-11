@@ -59,7 +59,7 @@
 
 <script src="/plugins/ot/ot.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+<script src="https://fathomless-shelf-45652.herokuapp.com/peer/peer.js"></script>
 
 <script>
   var EditorClient = ot.EditorClient;
@@ -122,7 +122,14 @@
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
     // PeerJS object
-    var peer = new Peer(username + roomId, {key: '1mcvks7ma5q4zpvi'});
+    var peer = new Peer(username + roomId, {
+      host: 'glacial-cliffs-92998.herokuapp.com',
+      path: '/peerjs',
+      port: 443,
+      secure: true,
+      key: 'collaborator',
+      debug: true
+    });
 
     peer.on('open', function(){
       $('#my-id').text(peer.id);
