@@ -66,7 +66,7 @@
   var SocketIOAdapter = ot.SocketIOAdapter;
   var CodeMirrorAdapter = ot.CodeMirrorAdapter;
 
-  var socket = io.connect('http://localhost:3000');
+  var socket = io.connect('https://glacial-cliffs-92998.herokuapp.com');
   var editor = CodeMirror.fromTextArea(document.getElementById("code-screen"), {
     lineNumbers: true,
     theme: "monokai"
@@ -123,7 +123,7 @@
 
     // PeerJS object
     var peer = new Peer(username + roomId, {
-      host: 'glacial-cliffs-92998.herokuapp.com',
+      host: 'https://fathomless-shelf-45652.herokuapp.com',
       path: '/peerjs',
       port: 443,
       secure: true,
