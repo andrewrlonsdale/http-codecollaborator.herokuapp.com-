@@ -66,7 +66,7 @@
   var SocketIOAdapter = ot.SocketIOAdapter;
   var CodeMirrorAdapter = ot.CodeMirrorAdapter;
 
-  var socket = io.connect('https://glacial-cliffs-92998.herokuapp.com');
+  var socket = io.connect();
   var editor = CodeMirror.fromTextArea(document.getElementById("code-screen"), {
     lineNumbers: true,
     theme: "monokai"
@@ -123,7 +123,7 @@
 
     // PeerJS object
     var peer = new Peer(username + roomId, {
-      host: 'https://fathomless-shelf-45652.herokuapp.com',
+      host: 'fathomless-shelf-45652.herokuapp.com',
       path: '/peerjs',
       port: 443,
       secure: true,
@@ -134,12 +134,14 @@
     peer.on('open', function(){
       $('#my-id').text(peer.id);
     });
+
     // Receiving a call
     peer.on('call', function(call){
       // Answer the call automatically (instead of prompting user) for demo purposes
       call.answer(window.localStream);
       step3(call);
     });
+
     peer.on('error', function(err){
       alert(err.message);
       // Return to step 2 if error occurs
@@ -149,7 +151,6 @@
     // Click handlers setup
     $(function(){
       $('#make-call').click(function(){
-
         // Initiate a call!
         var call = peer.call($('#callto-id').val(), window.localStream);
         step3(call);
@@ -158,13 +159,6 @@
         window.existingCall.close();
         step2();
       });
-
-      // Retry if getUserMedia fails
-      $('#step1-retry').click(function(){
-        $('#step1-error').hide();
-        step1();
-      });
-      // Get things started
       step1();
     });
     function step1 () {
@@ -176,10 +170,12 @@
         step2();
       }, function(){ $('#step1-error').show(); });
     }
+
     function step2 () {
       $('#step1, #step3').hide();
       $('#step2').show();
     }
+
     function step3 (call) {
       // Hang up on an existing call if present
       if (window.existingCall) {
@@ -196,6 +192,5 @@
       $('#step1, #step2').hide();
       $('#step3').show();
     }
-
 
 </script>
