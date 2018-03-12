@@ -35,7 +35,7 @@ passport.use(new LocalStrategy({
 passport.use(new FacebookStrategy({
 	clientID: '352659715216894',
 	clientSecret: '3be7f8b3de7621f42462510f2950e90e',
-	callbackURL: 'https://glacial-cliffs-92998.herokuapp.com/auth/facebook/callback',
+	callbackURL: 'https://codecollaborator.herokuapp.com/auth/facebook/callback',
 	profileFields: ['id', 'displayName', 'email']
 },
 function(token, refreshToken, profile, done) {
