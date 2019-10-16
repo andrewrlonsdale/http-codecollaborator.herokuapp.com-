@@ -17,7 +17,7 @@ var indexRoute = require('./routes/index');
 var authRoute = require('./routes/auth');
 var taskRoute = require('./routes/task');
 
-mongoose.connect(config.dbConnstring);
+mongoose.connect(config.dbConnstring, { useNewUrlParser: true, useUnifiedTopology: true });
 global.User = require('./models/user');
 global.Task = require('./models/task');
 
